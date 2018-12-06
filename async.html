@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Overlay iFrame payment form</title>
+<!--   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css"> -->
+  	<style type="text/css">
+  		.box {
+  			width: 300px;
+  			height: 300px;
+  			background-color: lightgrey;
+  			border: 1px solid black;
+        overflow: hidden;
+  			/*overflow: auto;*/
+        transition: 1s;
+        position: relative;
+        margin: auto;
+  		}
+
+      .txt {
+        color: white;
+        font-weight: bold;
+        height: 150px;
+      }
+
+      .box button {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 1000;
+        width: 30px;
+        height: 30px;
+      }
+
+      .box div {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background-color: lightblue;
+        transition: .6s;
+      }
+
+      div.open {
+        left: 0;
+      }
+  	</style>
+</head>
+
+
+<body>
+
+<div class="box">
+
+</div>
+
+
+<script type="text/javascript">
+
+function getData(callBackFunc){
+  setTimeout(function(){
+    var myData = 777;
+    callBackFunc(myData);
+  }, 1000);
+};
+
+getData(function(dataFromAsync){
+  console.log(dataFromAsync);
+});
+
+///// Promises
+
+let myPromise = new Promise(function(resolve, reject){
+  setTimeout(function(){
+    var myData = 111;
+    if(myData == 1112){
+      resolve(myData);
+    }
+    else {
+      reject("Opps, there is an Error!")
+    }  
+  }, 2000);
+});
+
+
+myPromise.then(function(response){
+  console.log(response);
+}, function(err){
+  console.log(err);
+});
+
+//console.log(Date.now()); /// 1541787000559 // Milliseconds from 01.01.1970
+
+let timeObj = new Date(1541787000559);
+console.log(timeObj.toTimeString());
+
+
+//// https://www.w3schools.com/jsref/jsref_obj_date.asp
+
+////  https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+
+</script>
+
+</body>
+</html>
+
